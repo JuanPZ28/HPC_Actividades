@@ -1,3 +1,17 @@
-ACTIVIDADES HPC POR:
-JUAN DAVID LOPEZ
-JULIO FLORES
+# 🧠💻 ACTIVIDADES HPC
+
+
+
+
+
+░█─░█ ─█▀▀█ ─█▀▀█
+░█▀▀█ ░█▄▄█ ░█─▄▄
+░█─░█ ░█─░█ ░█▄▄█ 
+🚀 High Performance Computing (HPC)
+
+
+
+
+**Autores:**  
+*Juan David López*  
+*Julio Flores*
