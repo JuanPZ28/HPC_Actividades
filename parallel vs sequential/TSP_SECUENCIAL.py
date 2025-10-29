@@ -1,4 +1,4 @@
-#IMPORTAICON DE LIBRERIAS
+#IMPORTACION DE LIBRERIAS
 import time
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -146,3 +146,4 @@ def execution(grafo,Lista_ciudades,Lista_A, Lista_B, Lista_C, Lista_D, Lista_E, 
   plt.show()
 
 execution(grafo,Lista_ciudades,Lista_A, Lista_B, Lista_C, Lista_D, Lista_E, Lista_F,RECORRIDOS_A, RECORRIDOS_B, RECORRIDOS_C, RECORRIDOS_D, RECORRIDOS_E, RECORRIDOS_F)
+
