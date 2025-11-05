@@ -16,16 +16,14 @@ def image_to_grayscale(img):
 def sobel(imagen_gris):
   imagen_gris= np.array(imagen_gris)#Pasarlo a una matriz 
 
-  # ADDED: convertir a un array de enteros con signo para evitar overflow en multiplicaciones
+  #convertir a un array de enteros con signo para evitar overflow en multiplicaciones
   if imagen_gris.dtype == np.uint8:
       img_int = imagen_gris.astype(np.int32)   # o np.int16
   else:
       img_int = imagen_gris.astype(np.int32)
 
-  # ADDED: si la imagen tiene 3 canales (tu image_to_grayscale deja 3 canales iguales),
-  # tomamos sólo un canal para trabajar con escala de grises 2D (evita operaciones con vectores)
   if img_int.ndim == 3:
-      img_int = img_int[..., 0]  # usar el primer canal (R=G=B en tu conversión)
+      img_int = img_int[..., 0]  # usar el primer canal (R=G=B)
 
   Gx_kernel = np.array([[-1, 0, 1],
                   [-2, 0, 2],
@@ -34,7 +32,6 @@ def sobel(imagen_gris):
                   [ 0,  0,  0],
                   [ 1,  2,  1]], dtype=np.int32)
 
-  # ADDED: usar shape[:2] sobre img_int (ahora img_int es 2D)
   filas, columnas = img_int.shape  # funciona para grayscale 2D
   print("filas (alto):", filas, "columnas (ancho):", columnas)
 
@@ -49,9 +46,7 @@ def sobel(imagen_gris):
           gy += img_int[i+di, j+dj] * Gy_kernel[di+1, dj+1]
       out[i,j]=math.hypot(gx, gy)#Calculo con precision numerica para imagenes
 
-  # ADDED: crear imagen resultado en 3 canales (tal como intentabas asignar [255,255,255])
   out_color = np.zeros((filas, columnas, 3), dtype=np.uint8)
-  # ADDED: aplicar umbral punto por punto (aquí usas 360 como en tus ejemplos)
   for ii in range(filas):
     for jj in range(columnas):
       if out[ii, jj] >= 360:
@@ -59,7 +54,6 @@ def sobel(imagen_gris):
       else:
         out_color[ii, jj] = [0, 0, 0]
 
-  # ADDED: devolver la imagen en 3 canales (blanco/negro) para poder mostrarla con imshow
   return out_color
 
 def execution(img, method):
@@ -75,7 +69,6 @@ def execution(img, method):
 if __name__ == "__main__":
   img = iio.imread(IMAGE)
 
-  # ADDED: ajustado unpacking para recibir la imagen sobel también
   imagen_gris, imagen_sobel, tiempo_ejecucion = execution(img, method=image_to_grayscale)
 
 
@@ -87,4 +80,5 @@ if __name__ == "__main__":
   axes[1].set_title("Imagen en grises")
   axes[2].imshow(imagen_sobel) 
   axes[2].set_title("Sobel")
+
   plt.show()
