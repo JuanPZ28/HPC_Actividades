@@ -71,7 +71,7 @@ def sobel(imagen_gris, n_procesos):
       img_int = imagen_gris.astype(np.int32)
 
   if img_int.ndim == 3:
-      img_int = img_int[..., 0]  # usar el primer canal (R=G=B en tu conversión)
+      img_int = img_int[..., 0]  # usar el primer canal (R=G=B)
 
   filas, columnas = img_int.shape  # funciona para grayscale 2D    
   altura= len(img_int)
@@ -123,7 +123,7 @@ def execution(img, method):
 if __name__ == "__main__":
   img = iio.imread(IMAGE)
 
-  # ADDED: ajustado unpacking para recibir la imagen sobel también
+  # DESEMPAQUETADO
   imagen_gris, imagen_sobel, tiempo_ejecucion = execution(img, method=image_to_grayscale)
 
 
@@ -135,4 +135,5 @@ if __name__ == "__main__":
   axes[1].set_title("Imagen en grises")
   axes[2].imshow(imagen_sobel)
   axes[2].set_title("Sobel")
+
   plt.show()
